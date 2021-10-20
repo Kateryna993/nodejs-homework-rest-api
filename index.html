@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="add-avatar" action="" enctype="multipart/form-data">
+      <input type="file" name="file" multiple />
+      <button type="submit">Add file (avatar)</button>
+    </form>
+    <script>
+      const addAvatar = document.getElementById('add-avatar')
+      addAvatar.addEventListener('submit', function (e) {
+        e.preventDefault()
+        console.log(this.querySelector('[name=file]').files[0])
+        const form = new FormData()
+        form.append('file', file)
+      })
+    </script>
+  </body>
+</html>
