@@ -4,6 +4,7 @@ const {
   controllerWrapper,
   validation,
   authenticate,
+  upload,
 } = require('../../middlewares')
 const { users: ctrl } = require('../../controllers')
 const router = express.Router()
@@ -17,4 +18,10 @@ router.post('/signup', validation(joiSchema), controllerWrapper(ctrl.signup))
 router.post('/login', validation(joiSchema), controllerWrapper(ctrl.login))
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout))
 router.get('/current', authenticate, controllerWrapper(ctrl.getCurrentUser))
+router.patch(
+  '/avatars',
+  authenticate,
+  upload.single('avatar'),
+  controllerWrapper(ctrl.uploadAvatar)
+)
 module.exports = router

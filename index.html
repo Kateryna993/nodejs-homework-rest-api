@@ -15,9 +15,9 @@
       const addAvatar = document.getElementById('add-avatar')
       addAvatar.addEventListener('submit', function (e) {
         e.preventDefault()
-        console.log(this.querySelector('[name=file]').files[0])
-        const form = new FormData()
-        form.append('file', file)
+        const file = this.querySelector('[name=file]').files[0]
+        const data = new FormData()
+        data.append('file', file)
       })
     </script>
   </body>

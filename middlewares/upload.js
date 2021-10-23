@@ -1,7 +1,7 @@
 const multer = require('multer')
 const path = require('path')
 
-const tempDir = path.join(__dirname, 'temp')
+const tempDir = path.join(__dirname, '../', 'temp')
 console.log(tempDir)
 
 const uploadSetting = multer.diskStorage({
@@ -11,9 +11,9 @@ const uploadSetting = multer.diskStorage({
   filename: (req, file, cb) => {
     cb(null, file.originalname) // начальное имя файла
   },
-  limits: {
-    fileSize: 2048,
-  },
+  // limits: {
+  //   fileSize: 2048,
+  // },
 })
 
 const upload = multer({
