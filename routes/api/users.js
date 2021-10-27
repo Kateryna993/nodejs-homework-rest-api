@@ -15,6 +15,8 @@ const router = express.Router()
 4. Выход */
 
 router.post('/signup', validation(joiSchema), controllerWrapper(ctrl.signup))
+router.post('/verify', controllerWrapper(ctrl.resendEmail))
+router.get('/verify/:verifyToken', controllerWrapper(ctrl.verify))
 router.post('/login', validation(joiSchema), controllerWrapper(ctrl.login))
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout))
 router.get('/current', authenticate, controllerWrapper(ctrl.getCurrentUser))
@@ -24,4 +26,5 @@ router.patch(
   upload.single('avatar'),
   controllerWrapper(ctrl.uploadAvatar)
 )
+
 module.exports = router
